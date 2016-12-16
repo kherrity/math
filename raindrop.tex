@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\renewcommand{\baselinestretch}{1.05}
+\usepackage{amsmath,amsthm,verbatim,amssymb,amsfonts,amscd, graphicx}
+\usepackage{graphics}
+\topmargin0.0cm
+\headheight0.0cm
+\headsep0.0cm
+\oddsidemargin0.0cm
+\textheight23.0cm
+\textwidth16.5cm
+\footskip1.0cm
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{surfacecor}{Corollary 1}
+\newtheorem{conjecture}{Conjecture} 
+\newtheorem{question}{Question} 
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+ 
+\title{Dynamical problems with variable mass}
+\author{Kyle Herrity}
+\maketitle
+
+\begin{proposition}
+ A spherical raindrop, starting from rest, falls under the influence of gravity. If it gathers in water vapor (assumed at rest) at a rate proportional to its surface, and if its initial radius is $0$, show that it falls with constant acceleration of $g/4$.
+\end{proposition}
+\begin{proof}
+First some preliminaries. We can write the formula for the mass as a function of time of the raindrop.
+\[ m = m(t) = \rho \frac{4}{3}\pi r(t)^3 \]
+where $\rho$ is the density of the raindrop. Since we are told that the raindrop gathers water vapor at a rate proportional to the surface of the sphere, we have
+\[ \frac{dm}{dt} = k 4\pi r(t)^2 \]
+But
+\begin{align} 
+\frac{dm}{dt} &= \frac{dm}{dr}\frac{dr}{dt}\\
+              &= \rho 4 \pi r^2 \frac{dr}{dt}\\
+              &= k4\pi r^2
+\end{align}
+From which it follows that $\frac{dr}{dt} = \frac{k}{\rho}$. Therefore, $r(t) = \frac{k}{\rho}t$, since the raindrop starts with zero radius.
+By Newton's 2nd law, we have
+\[ (v + w)\frac{dm}{dt} + F = \frac{d}{dt}(mv) \]
+which simplifies to 
+\[  w\frac{dm}{dt} + F = m\frac{dv}{dt} \]
+Here, $w$ is the velocity of the water vapor, relative to the raindrop, so $w = -v$. Also, the only external force acting on the raindrop is gravity, so that $F = -mg$. Thus, we have
+\[  -v\frac{dm}{dt} - mg = m\frac{dv}{dt} \]
+Rearranging, we get
+\begin{align}
+\frac{dv}{dt} &= -\frac{v}{m}\frac{dm}{dt} - g\\
+              &= \frac{-v}{\rho(\frac{4}{3}\pi r^3)}k 4\pi r^2 - g\\
+              &= \frac{-3vk}{\rho r}k - g\\
+              &= \frac{-3v}{t} - g\\
+\end{align}
+So we have
+\[ \frac{dv}{dt} + \frac{3v}{t} = -g \]
+which is a standard first order linear differential equation, and we can use the integrating factor $\int \frac{3}{t} = 3\log(t)$.
+Since $e^{3 log(t)} = t^3$,
+\[ \frac{d}{dt}(t^3v) = -gt^3 \]
+And after integrating both sides, we get
+\[ t^3v = \int -gt^3 = -g\frac{t^4}{4} \]
+So that
+\[ v = \frac{-gt}{4} \]
+So that the acceleration. $a$, is
+\[ a = \frac{dv}{dt} = \frac{-g}{4} \]
+\end{proof}
+ 
+\end{document}
